@@ -1,0 +1,27 @@
+# Unshackle configuration
+
+tag: "NOGRP"
+
+# Download naming
+output_template:
+  movies: "{title} ({year}) [{quality}]"
+  series: "{title} - {season_episode} - {episode_name?} [{quality}]"
+  songs: "{track_number}. {title}"
+
+# Persistent storage locations
+directories:
+  downloads: /downloads
+  services:
+    - /data/services
+  cookies: /data/cookies
+  wvds: /data/WVDs
+  prds: /data/PRDs
+  cache: /data/cache
+  logs: /data/logs
+  exports: /data/exports
+  dcsl: /data/dcsl
+  temp: /data/temp
+
+# REST API configuration
+serve:
+  api_secret: "CHANGE-THIS-TO-A-LONG-RANDOM-SECRET"
