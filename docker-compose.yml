@@ -1,13 +1,7 @@
 services:
   unshackle:
-    image: unshackle:latest
+    image: ghcr.io/mrasmith/unshackle:latest
     container_name: unshackle
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        UNSHACKLE_BRANCH: dev
-
     restart: unless-stopped
 
     ports:
@@ -17,14 +11,11 @@ services:
       TZ: Europe/Dublin
 
     volumes:
-      - unshackle_config:/config
-      - unshackle_data:/data
-      - unshackle_downloads:/downloads
+      - /home/docker/unshackle/config:/config
+      - /home/docker/unshackle/downloads:/downloads
+      - /home/docker/unshackle/data:/data
 
     command:
-      - uv
-      - run
-      - --no-sync
       - unshackle
       - serve
       - --host
@@ -32,8 +23,3 @@ services:
       - --port
       - "8786"
       - --api-only
-
-volumes:
-  unshackle_config:
-  unshackle_data:
-  unshackle_downloads:
