@@ -1,0 +1,39 @@
+services:
+  unshackle:
+    image: unshackle:latest
+    container_name: unshackle
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UNSHACKLE_BRANCH: dev
+
+    restart: unless-stopped
+
+    ports:
+      - "8786:8786"
+
+    environment:
+      TZ: Europe/Dublin
+
+    volumes:
+      - unshackle_config:/config
+      - unshackle_data:/data
+      - unshackle_downloads:/downloads
+
+    command:
+      - uv
+      - run
+      - --no-sync
+      - unshackle
+      - serve
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8786"
+      - --api-only
+
+volumes:
+  unshackle_config:
+  unshackle_data:
+  unshackle_downloads:
