@@ -24,4 +24,4 @@ directories:
 
 # REST API configuration
 serve:
-  api_secret: "CHANGE-THIS-TO-A-LONG-RANDOM-SECRET"
+  api_secret: "under-a-blood-red-sky"
